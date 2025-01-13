@@ -22,7 +22,7 @@ router.post("/login", function (req, res, next) {
 });
 
 router.get("/getUserInfo", function (req, res, next) {
-  const token = req.cookies["Admin-Token"];
+  const token = req.params.token;
   const data = userInfo[token];
   if (!data) {
     res.json({ code: "A0230", msg: "登录过期" });
