@@ -1,0 +1,26 @@
+name: Deploy Express Project to BT Panel
+
+on:
+  push:
+    branches:
+      - main # 更改为你的默认分支
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Deploy to BT Panel
+        uses: X-C2/bt-deploy@v1.0.0 # 使用现成的BT面板部署动作
+        env:
+          BT_HOST: 101.132.123.18
+          BT_PORT: 31687
+          BT_USER: mcsdro3u
+          BT_PASS: a702114c
+          BT_PATH: /www/wwwroot/express-admin
